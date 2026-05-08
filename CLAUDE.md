@@ -1,31 +1,31 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+このファイルは、リポジトリで作業する Claude Code (claude.ai/code) へのガイダンスを提供します。
 
-## Commands
+## コマンド
 
 ```bash
-npm run dev       # Start dev server at http://localhost:5173
-npm run build     # Type-check + production build
+npm run dev       # 開発サーバー起動 http://localhost:5173
+npm run build     # 型チェック + プロダクションビルド
 npm run lint      # ESLint
-npm run preview   # Preview production build
+npm run preview   # プロダクションビルドのプレビュー
 ```
 
-## Architecture
+## アーキテクチャ
 
-Single-page TODO app built with React 19 + TypeScript + Vite. Data persists in `localStorage` under the key `"todos"`.
+React 19 + TypeScript + Vite で構築したシングルページの TODO アプリ。データは `localStorage` のキー `"todos"` に永続化される。
 
-**Data flow:**
-- `src/types.ts` — `Todo` interface and `FilterType` union
-- `src/hooks/useTodos.ts` — all state and CRUD logic; syncs to `localStorage` on every change
-- `src/App.tsx` — filter state lives here; computes filtered/count views and passes callbacks down
-- `src/components/` — three presentational components: `TodoInput`, `TodoItem`, `TodoFilter`
+**データフロー:**
+- `src/types.ts` — `Todo` 型・`FilterType` ユニオン定義
+- `src/hooks/useTodos.ts` — CRUD ロジックと `localStorage` への同期
+- `src/App.tsx` — フィルター状態を管理し、算出した値とコールバックを子に渡す
+- `src/components/` — `TodoInput`・`TodoItem`・`TodoFilter` の3つのコンポーネント
 
-**Edit-in-place:** double-click a task label to enter edit mode. Enter commits; Escape cancels; empty text deletes the item.
+**インライン編集:** タスク名をダブルクリックで編集モードに入る。Enter で確定、Escape でキャンセル、空にすると削除。
 
-## Deployment
+## デプロイ
 
-- **GitHub repository:** https://github.com/ktakatsuJP/todo
-- **Production URL:** https://ktakatsujp.github.io/todo/
-- Deployed via GitHub Actions (`.github/workflows/deploy.yml`) — triggers on push to `main`
-- Vite `base` is set to `/todo/` to match the GitHub Pages subpath
+- **GitHub リポジトリ:** https://github.com/ktakatsuJP/todo
+- **公開 URL:** https://ktakatsujp.github.io/todo/
+- `main` ブランチへの push をトリガーに GitHub Actions (`.github/workflows/deploy.yml`) が自動デプロイ
+- Vite の `base` を `/todo/` に設定（GitHub Pages のサブパスに合わせるため）

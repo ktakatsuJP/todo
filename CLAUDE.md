@@ -22,3 +22,10 @@ Single-page TODO app built with React 19 + TypeScript + Vite. Data persists in `
 - `src/components/` — three presentational components: `TodoInput`, `TodoItem`, `TodoFilter`
 
 **Edit-in-place:** double-click a task label to enter edit mode. Enter commits; Escape cancels; empty text deletes the item.
+
+## Deployment
+
+- **GitHub repository:** https://github.com/ktakatsuJP/todo
+- **Production URL:** https://ktakatsujp.github.io/todo/
+- Deployed via GitHub Actions (`.github/workflows/deploy.yml`) — triggers on push to `main`
+- Vite `base` is set to `/todo/` to match the GitHub Pages subpath
